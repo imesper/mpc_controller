@@ -92,18 +92,8 @@ int main() {
                     double epsi_delay = epsi0 - ( v * atan( (3*coeffs[3]*pow(x_delay, 2) + (2*coeffs[2]*x_delay) + coeffs[1] )) * dt / Lf );
 
 
-                    double psi_car = 0;
-                    double psi_pred = (v/Lf) * delta * dt;
-                    std::cout << "PSI: "<< epsi0  << ": " << M_PI_2 << std::endl;
-                    double v_pred = v + a * dt;
-
-                    double x = v * cos(psi_car) * dt;
-                    double y = v * sin(psi_car) * dt;
-
-
-                    double cte = polyeval(coeffs, x) - x;
-                    //double epsi =  atan(coeffs[1]);
-                    double epsi =  atan(coeffs[1] + (2*coeffs[2]*x) + (3*coeffs[3]*x*x));
+                    double cte = polyeval(coeffs, x0) - x0;
+                    double epsi =  atan(coeffs[1] + (2*coeffs[2]*x0) + (3*coeffs[3]*x0*x0));
 
                     Eigen::VectorXd state(6);
 
